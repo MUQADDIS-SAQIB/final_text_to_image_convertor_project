@@ -2,11 +2,11 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/index.py",  // Path to your main Python file that starts the app (adjust path as needed)
+      "src": "api/index.py",  
       "use": "@vercel/python"
     }
   ],
   "routes": [
-    { "src": "/(.*)", "dest": "api/index.py" }  // This will route all requests to index.py
+    { "src": "/(.*)", "dest": "api/index.py" } 
   ]
 }
