@@ -10,7 +10,7 @@
     { "src": "/(.*)", "dest": "api/index.py" }
   ],
   "env": {
-    "HUGGING_FACE_TOKEN": "@hugging_face_token"  // Reference token from Vercel dashboard
+    "HUGGING_FACE_TOKEN": "@hugging_face_token"  
   }
 }
 
