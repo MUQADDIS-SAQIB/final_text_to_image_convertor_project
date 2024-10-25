@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Styled Navbar</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome for icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="{{ url_for('static', filename='js/node.js') }}"></script>
+
+
+  <style>
+  .navbar {
+  background-color: #141415;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.container-fluid {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin: 0 !important;
+}
+
+.navbar-brand img {
+  height: 40px;
+}
+
+.nav-link, .navbar-brand, .dropdown-item {
+  color: #d1d1d1 !important;
+}
+
+.nav-link:hover, .dropdown-item:hover {
+  color: #fff !important;
+}
+
+.nav-item .badge {
+  background-color: #ff4b4b;
+  font-size: 0.8rem;
+  position: relative;
+  top: -10px;
+  margin-left: 5px;
+}
+
+# openModel {
+  background-color: #9b5de5;
+  color: white;
+  border-radius: 20px;
+  padding: 5px 15px;
+}
+
+#openModel:hover {
+  background-color: #7a47b3;
+}
+
+.dropdown-menu {
+  background-color: #000;
+}
+
+.dropdown-item:hover {
+  background-color: #333 !important;
+  color: white !important;
+}
+
+.fa-bars {
+  color: white;
+}
+
+
+
+    /* Parent and child div styling */
+    .parent {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end; /* Align child elements to the right */
+  width: 100%;
+  background-color: black;
+  padding: 20px;
+  height: auto;
+  /* Add margin between child elements */
+  gap: 50px;
+}
+    .child_1 {
+      flex: 1;
+      margin-left: 80px;
+    }
+    .child_2 {
+      flex: 1;
+      /* You can style this div as needed */
+    }
+
+    /* Button group and scale buttons */
+    .button-group {
+      background-color: #1a1a1a;
+      border-radius: 30px;
+      border: 2px solid #444;
+      width: 100%; /* Adjust to child1 width */
+      display: flex;
+      padding: 10px;
+    }
+    .button-group .btn {
+      flex: 1;
+      padding: 10px;
+      color: white;
+    }
+    .button-group .active {
+      background-color: #8e4ce2;
+      padding:10px;
+      border-radius:30px;
+    }
+    .button-group .new-btn {
+      background-color: #f0f0f5;
+      color: black;
+      border-radius: 50px;
+      height: 30px;
+      padding: 5px 10px;
+    }
+
+    /* Scale buttons grid */
+    .ratio-button {
+      background-color: #2b2b2b;
+      color: white;
+      padding: 15px 30px;
+      margin: 0px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      width: 100px;
+    }
+    .ratio-button.active {
+      background-color: #a46ce7;
+    }
+    .button-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    /* Text area styling */
+    textarea {
+      width: 100%;
+      height: 100%;
+      background-color: transparent;
+      border: none;
+      color: #ccc;
+      font-family: monospace;
+      font-size: 14px;
+      resize: none;
+      outline: none;
+    }
+    .content {
+            padding: 10px;
+            background-color: #1a1a1a;
+            border-radius: 10px;
+            border: 2px solid #444;
+            width: 100%; /* Takes the full width of the parent */
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Space between text and toggle */
+            color: white;
+            font-family: 'Arial Black', sans-serif;
+            font-size: 18px;
+            width:450;
+        }
+
+        /* The toggle switch container */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 25px;
+        }
+
+        /* Hide the default checkbox */
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        /* The slider (track) */
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            border-radius: 34px;
+            transition: 0.4s;
+        }
+
+        /* The
+ circle inside the slider */
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 5px;
+            bottom: 2.5px;
+            background-color: white;
+            border-radius: 50%;
+            transition: 0.4s;
+        }
+
+        /* When the input is checked, change the slider background */
+        input:checked + .slider {
+            background-color: #8e4ce2; /* Purple color when active */
+        }
+
+        /* Move the circle to the right when the toggle is active */
+        input:checked + .slider:before {
+            transform: translateX(25px);
+        }
+        .gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.gallery-item {
+  position: relative;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+  transition: transform 0.5s ease;
+}
+
+.overlay-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black */
+  color: white;
+  padding: 10px;
+
+  text-align: center;
+  font-size: 16px;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.gallery-item:hover img {
+  animation: zoom 0.5s forwards;
+}
+
+.gallery-item:hover .overlay-text {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Zoom animation for images */
+@keyframes zoom {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+
+.Our_Text_to_Image_generation {
+  padding: 20px;
+  margin-top: 300px;
+  background-color: #1a1a1a;
+  border-radius: none;
+  border: none;
+  width: 100%; /* Adjust to the desired width */
+  display: flex;
+  flex-direction: column; /* Arrange elements vertically */
+  align-items: center; /* Center elements horizontally */
+  margin-left: 30px; /* Shift to the right by 30 pixels */
+}
+
+/* Other styles... */
+.blue-bar {
+
+  color: white;
+padding: 5px 10px;
+border-radius: 0px;
+font-size: 35px;
+width: 100%;
+text-align: center;
+font-weight: bold;
+}
+
+.subtitle {
+  color: Blue;
+  font-size: 30px;
+  margin: 10px 0;
+   /* Adjust top and bottom margins as needed */
+   font-weight: bold;
+
+}
+
+.paragraph {
+  color: white;
+  font-size: 20px;
+  text-align: left;
+}
+.image-container {
+  position: relative;
+}
+
+.image-container img {
+  width: 100%;
+}
+
+.image-container .text {
+  position: absolute;
+  top: 20%; /* Adjusted to move text slightly higher */
+  left: 10%; /* Adjusted alignment for better layout */
+  color: white;
+  font-size: 24px;
+  line-height: 1.5;
+  max-width: 600px;
+  text-align: left;
+}
+
+.image-container .text h1 {
+  font-size: 48px;
+  font-weight: bold;
+  color: #ffffff; /* Bold white for visibility */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Subtle shadow for readability */
+}
+
+.image-container .text h3 {
+  font-size: 20px;
+  font-weight: normal;
+  margin-bottom: 10px;
+  color: #00FFFF; /* Cyan for better contrast */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.image-container .text p {
+  font-size: 18px;
+  color: #E0E0E0; /* Light gray for readability */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.image-container .highlight {
+  color: #ffffff; /* White for highlight text */
+}
+.case-studies {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.nav-buttons {
+    display: inline-flex;
+    gap: 10px;
+}
+
+.nav-btn {
+    background-color: transparent;
+    border: 1px solid #ffffff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 20px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.nav-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: scale(1.1);
+}
+
+.nav-btn:focus {
+    outline: none;
+}
+
+span {
+    font-weight: bold;
+}
+.faq-title {
+            text-align: center;
+            font-size: 48px;
+            margin-bottom: 40px;
+            color: #dddddd;
+        }
+        .accordion-button {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            border: none;
+            padding: 15px;
+        }
+        .accordion-button:focus {
+            box-shadow: none;
+        }
+        .accordion-body {
+            background-color: #2a2a2a;
+            color: #aaaaaa;
+            padding: 20px;
+        }
+        .accordion-item {
+            border: none;
+            border-bottom: 1px solid #333;
+        }
+        .accordion-button:not(.collapsed) {
+            color: #ff7c72;
+        }
+        .card-img {
+  height: 250px;
+  object-fit: cover;
+  opacity: 0.8;
+}
+
+.card-img-overlay {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 0.9rem;
+  padding: 5px 10px;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.card-content {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 10px;
+  border-radius: 10px;
+}
+.text-purple {
+  color: #9b59b6;
+}
+
+.btn-primary {
+  background-color: #8a2be2;
+  border-color: #8a2be2;
+}
+
+.btn-primary:hover {
+  background-color: #7a1cc1;
+  border-color: #7a1cc1;
+}
+
+.container {
+  background-color: #121212; /* Dark background like the one in your image */
+  padding: 40px;
+  border-radius: 10px;
+}
+
+h2 {
+  font-weight: bold;
+}
+
+p {
+  font-size: 1.1rem;
+}
+body {
+  font-family: Arial, sans-serif;
+}
+
+footer {
+  background-color: #141414;
+  color: #fff;
+  padding: 50px 20px;
+  font-size: 14px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+  flex-wrap: wrap;
+}
+
+.footer-logo img {
+  width: 120px;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+}
+
+.footer-column {
+  margin-right: 20px;
+}
+
+.footer-column h4 {
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 8px;
+}
+
+.footer-column ul li a {
+  color: #a5a5a5;
+  text-decoration: none;
+}
+
+.footer-column ul li a:hover {
+  color: #fff;
+}
+
+.footer-contact {
+  width: 20%;
+}
+
+.footer-contact h4 {
+  font-size: 16px;
+}
+
+.footer-contact a {
+  color: #a5a5a5;
+  text-decoration: none;
+}
+
+.footer-contact a:hover {
+  color: #fff;
+}
+
+.footer-social {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-social ul {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.footer-social ul li {
+  margin: 0 10px;
+}
+
+.footer-social ul li img {
+  width: 24px;
+}
+
+
+
+
+
+
+
+
+  </style>
+</head>
+
+<body class="container">
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg" style="margin-left: 0;margin-right:0;">
+  <div class="container-fluid" style="padding-left: 0; padding-right:0;">
+    <a class="navbar-brand" href="#" style="padding-right: 20px;">
+      <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" style="height: 40px;">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <!-- Platform Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="platformDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Platform
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="platformDropdown">
+            <li><a class="dropdown-item" href="#">All products</a></li>
+            <li><a class="dropdown-item" href="#">Face swap</a></li>
+            <li><a class="dropdown-item" href="#">Realistic Avatar</a></li>
+            <li>
+              <a class="dropdown-item" href="#">Streaming
+                <button style="background-color: white; color: lightblue; border: 1px solid lightblue; border-radius: 50%; padding: 3px 3px; font-size: 10px; cursor: pointer; margin-left: 10px;">
+                  Beta
+                </button>
+              </a>
+            </li>
+            <li><a class="dropdown-item" href="#">Video Translate</a></li>
+            <li><a class="dropdown-item" href="#">Talking Photo</a></li>
+            <li><a class="dropdown-item" href="#">Image Generator</a></li>
+            <li><a class="dropdown-item" href="#">Background Change</a></li>
+            <li><a class="dropdown-item" href="#">Video Campaign</a></li>
+            <li>
+              <a class="dropdown-item" href="#">Jarvis Moderator
+                <button style="background-color: white; color: lightblue; border: 1px solid lightblue; border-radius: 50%; padding: 3px 3px; font-size: 10px; cursor: pointer; margin-left: 10px;">
+                  New
+                </button>
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">AI Support Agent
+                <button style="background-color: white; color: lightblue; border: 1px solid lightblue; border-radius: 50%; padding: 3px 3px; font-size: 10px; cursor: pointer; margin-left: 10px;">
+                  New
+                </button>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- Resources Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="resourcesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Resources
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="resourcesDropdown">
+            <li><a class="dropdown-item" href="#">Use Cases</a></li>
+            <li><a class="dropdown-item" href="#">Videos</a></li>
+            <li><a class="dropdown-item" href="#">Creator Fund</a></li>
+            <li><a class="dropdown-item" href="#">Webinar</a></li>
+            <li><a class="dropdown-item" href="#">Guides</a></li>
+            <li><a class="dropdown-item" href="#">Affiliate Program</a></li>
+          </ul>
+        </li>
+
+        <!-- Company Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="companyDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Company
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="companyDropdown">
+            <li><a class="dropdown-item" href="#">About Us</a></li>
+            <li><a class="dropdown-item" href="#">Blog</a></li>
+            <li><a class="dropdown-item" href="#">Research</a></li>
+            <li><a class="dropdown-item" href="#">News</a></li>
+          </ul>
+        </li>
+
+        <!-- Pricing -->
+        <li class="nav-item">
+          <a class="nav-link" href="#">Pricing <span class="badge">30% OFF</span></a>
+        </li>
+      </ul>
+
+      <!-- Mobile Menu Icon -->
+      <i class="fa-solid fa-bars" style="padding-left: 10px;"></i>
+    </div>
+  </div>
+</nav>
+<!-- Main content (parent div) -->
+<div class="parent">
+  <div class="child_1" style="width">
+    <h1 style="font-family: 'Arial Black'; font-size: 35px; font-weight: bold; color: white;">Image Generator</h1>
+    <p style="font-family: 'Arial', sans-serif; font-size: 20px; color: #B3B3B3; font-weight: 400;">Create Stunning AI Generated Images</p>
+
+    <form action="/generate_image" method="post" style="max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 8px; background-color: #f9f9f9;">
+    <div class="prompt">
+        <h3 style="text-align: center; color: #333;">Prompt</h3>
+        <textarea name="description" placeholder="Enter the image description..."
+            style="width: 100%; height: 100px; padding: 10px; border-radius: 4px; border: 1px solid #ccc; font-size: 16px; resize: none;"></textarea>
+    </div>
+    <button type="submit" style="width: 100%; padding: 10px; border: none; border-radius: 4px; background-color: #007BFF; color: white; font-size: 16px; cursor: pointer;">Generate Stickers</button>
+</form>
+
+<!-- Section for showing generated stickers and buttons after image generation -->
+{% if images %}
+<div style="margin-top: 20px;">
+    <h2 style="text-align: center; color: #333;">Generated Stickers</h2>
+    {% for index in range(images|length) %}
+        <div style="margin-bottom: 20px; text-align: center;">
+            <img src="data:image/{{ images[index]['format'] }};base64,{{ images[index]['data'] }}" alt="Sticker {{ index + 1 }}" style="max-width: 100%; height: auto;" />
+            <br>
+            <!-- Download Button -->
+            <form action="{{ url_for('download_image', image_id=index) }}" method="get" style="display: inline;">
+                <label for="download_format_{{ index }}" style="margin-right: 10px;color:white;font-weight:bold;">Download Format:</label>
+                <select name="format" id="download_format_{{ index }}" style="padding: 5px; border-radius: 4px; border: 1px solid #ccc;">
+                    <option value="jpeg">JPEG</option>
+                    <option value="gif">GIF</option>
+                </select>
+                <button type="submit" style="padding: 5px 10px; border: none; border-radius: 4px; background-color: #28A745; color: white; cursor: pointer;">Download Sticker {{ index + 1 }}
+                </button>
+
+            </form>
+
+        </div>
+    {% endfor %}
+</div>
+{% endif %}
+      
+
+    <!-- Scale section -->
+    <div class="scale" style="padding: 20px;">
+      <h3 style="font-family: 'Arial', sans-serif; font-size: 25px; color: white; font-weight: 400;">Scale</h3>
+      <div class="button-grid">
+        <button class="ratio-button active">1:1</button>
+        <button class="ratio-button">4:3</button>
+        <button class="ratio-button">3:4</button>
+        <button class="ratio-button">16:9</button>
+        <button class="ratio-button">9:16</button>
+        <button class="ratio-button">3:2</button>
+        <button class="ratio-button">2:3</button>
+        <button class="ratio-button">Other</button>
+      </div>
+    </div>
+    <div class="content">
+        Speed up the text
+        <label class="switch">
+            <input type="checkbox">
+            <span class="slider"></span>
+        </label>
+    </div>
+   <div class="premium" style="padding: 10px;
+            background-color: #1a1a1a;
+            border-radius: 10px;
+            border: 2px solid #444;
+            width: 100%; /* Takes the full width of the parent */
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Space between text and icon */
+            color: white;
+            font-family: 'Arial ', sans-serif;
+            font-size: 18px;
+            margin-top: 20px; /* Adds space between sections */
+">
+    <span>Generate Premium Result</span>
+
+    <div style="display: flex; align-items: center; justify-content: flex-end;">
+      <span style="font-size: 24px; color: white; margin-right: 5px;">4</span>
+      <div style="display: flex; align-items: center; justify-content: center;
+                  width: 24px; height: 24px; background-color: #555;
+                  border-radius: 50%; color: white;">
+        <span style="font-size: 12px;">A</span>
+      </div>
+    </div>
+</div>
+
+
+
+
+  </div>
+
+  <div class="child_2">
+  <div class="gallery">
+
+    <!-- Image 1 -->
+    <div class="gallery-item" style="height: 250px;">
+      <img src="{{ url_for('static', filename='images/img_6.jpeg') }}" alt="Image 1" class="zoom-image">
+      <div class="overlay-text">Capturing the moment - photography through a creative lens</div>
+    </div>
+
+    <!-- Image 2 -->
+    <div class="gallery-item" style="height: 190px;">
+      <img src="{{ url_for('static', filename='images/img_10.jpeg') }}" alt="Image 2" class="zoom-image">
+      <div class="overlay-text">A camera nestled in nature, ready to tell stories</div>
+    </div>
+
+    <!-- Image 3 -->
+    <div class="gallery-item" style="height: 210px;">
+      <img src="{{ url_for('static', filename='images/img_8.jpeg') }}" alt="Image 3" class="zoom-image">
+      <div class="overlay-text">Serenity by the lake, where mountains meet the sky</div>
+    </div>
+
+    <!-- Image 4 -->
+    <div class="gallery-item" style="height: 250px;">
+      <img src="{{ url_for('static', filename='images/img_4.jpeg') }}" alt="Image 4" class="zoom-image">
+      <div class="overlay-text">A stunning sunset beneath a magnificent tree.</div>
+    </div>
+
+    <!-- Image 5 -->
+    <div class="gallery-item" style="height: 290px;">
+      <img src="{{ url_for('static', filename='images/img_5.jpeg') }}" alt="Image 5" class="zoom-image">
+      <div class="overlay-text">Dreamy reflections – a surreal world of color and calm.</div>
+    </div>
+
+    <!-- Image 6 -->
+    <div class="gallery-item" style="height: 270px;">
+      <img src="{{ url_for('static', filename='images/img_9.jpeg') }}" alt="Image 6" class="zoom-image">
+      <div class="overlay-text">The beauty of nature captured in the vibrant red of a flower.</div>
+    </div>
+
+    <!-- Image 7 -->
+    <div class="gallery-item" style="height: 200px;">
+      <img src="{{ url_for('static', filename='images/img_13.jpeg') }}" alt="Image 7" class="zoom-image">
+      <div class="overlay-text">Joy in nature, embracing the outdoors with a smile.</div>
+    </div>
+
+    <!-- Image 8 -->
+    <div class="gallery-item" style="height: 170px;">
+      <img src="{{ url_for('static', filename='images/img_7jpeg.jpeg') }}" alt="Image 8" class="zoom-image">
+      <div class="overlay-text">The art of photography – a moment of focus.</div>
+    </div>
+
+    <!-- Image 9 -->
+    <div class="gallery-item" style="height: 190px;">
+      <img src="{{ url_for('static', filename='images/img_11.jpeg') }}" alt="Image 9" class="zoom-image">
+      <div class="overlay-text">A world within a bubble – nature's delicate balance</div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+</div>
+<div class="Our_Text_to_Image_generation" style="padding: 20px;margin-top:300px;">
+
+    <div class="blue-bar">Use Our Text to Image Generator</div>
+    <div class="subtitle">Bring Your Ideas to Life</div>
+    <div class="paragraph">Welcome to AKOOL, where our generative AI platform serves as your extensive graphic team-except it's all in the software. Join over 8,000 innovative companies worldwide using our technology
+      to create transformative visual marketing campaigns.</div>
+  </div>
+<div class="container text-center" style="margin-top: 90px;">
+  <div class="row" style="display: flex; gap: 20px;">
+
+    <div class="col" style="border: 1px solid black; padding: 10px; flex: 1;">
+      <h2>Generative AI is the Future of Marketing</h2>
+      <h3 class="mt-3" style="color: white; font-weight: bold; font-size: 35px;">Create Your First Campaign in</h3>
+      <h3 style="color: purple; font-weight: bold; font-size: 35px;">3 Easy Steps</h3>
+      <p style="font-size: 25px; font-family: Arial;">AKOOL's AI Text to Image Generator offers a seamless user experience and a gentle learning curve.</p>
+      <p style="font-size: 25px; font-family: Arial;">Corporate marketing teams can begin creating breathtaking advertisements without graphic design experience or a technical background.</p>
+      <button class="btn mt-3" style="background-color: #FF00FF; font-size: 18px; min-height: 38px; padding-left: 24px; padding-right: 24px; color: #fff;">Start your visual campaign</button>
+    </div>
+    <div class="col" style="border: 1px solid black; padding: 10px; flex: 1;">
+  <div class="text-center">
+    <h2 class="mb-4" style="color: #800080; font-size: 25px; font-weight: bold; width: 420px; text-align: center;">Choose Text or Image to start</h2>
+    <div class="toggling" style="display: flex; margin-bottom: 30px;">
+      <a href="https://static.website-files.org/a/c5be7a05/_next/static/media/switch.3702deb4.gif">
+        <img src="https://static.website-files.org/a/c5be7a05/_next/static/media/switch.3702deb4.gif" style="width: 50px; height: 50px;" alt="Switch Image">
+      </a>
+      <ul style="list-style: none; padding: 0; margin: 0; width: 400px; height: 48px;">
+        <li style="margin-left: 20px; position: relative; width: 400px; height: 48px; text-align: justify;">
+          <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background-color: #007bff;"></span> Select Text to AI Image to create an image with a written prompt
+        </li>
+        <li style="margin-left: 20px; position: relative; width: 400px; height: 48px; text-align: justify;">
+          <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background-color: #007bff;"></span> Select Image to AI Image to generate a photo using existing media
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Added margin-top: 50px to create space between sections -->
+  <div class="text-center" style="margin-top: 50px;">
+    <div class="image" style="display: flex; align-items: center;">
+      <img src="https://static.website-files.org/a/c5be7a05/_next/static/media/pen.44c850ad.gif" style="width: 50px; height: 50px;" alt="Pen GIF">
+      <h2 class="mb-4" style="color: #800080; font-size: 25px; font-weight: bold; width: 420px; text-align: center;">Enter your Prompt</h2>
+    </div>
+    <div class="text" style="margin: 5px 0 0;">
+      <p style="text-align: justify;">Build a detailed description of your image background, model, and preferred style.</p>
+    </div>
+  </div>
+      <div class="HR">
+        <h2 class="mb-4" style="color: #800080; font-size: 25px; font-weight: bold; width: 420px; text-align: center;">Click the HQ generate button</h2>
+        <div class="images"  style="display:flex" >
+          <img src="https://static.website-files.org/a/c5be7a05/_next/static/media/h.b34f7f13.gif" alt="Image 1" style="width: 30px; height: 20px;">
+          <img src="https://static.website-files.org/a/c5be7a05/_next/static/media/q.f5826a47.gif" alt="Image 2" style="width: 30px; height: 20px;">
+         <p style="text-align: justify;">The image tool will create a custom, AI-generated image in a few short minutes.  </p>
+        </div>
+
+
+
+      </div>
+    </div>
+
+</div>
+
+
+
+
+</div>
+<div class="image-container" style=" margin-top: 200px;">
+
+  <img src="{{url_for('static',filename='images/img_3.png')}}" alt="Image">
+  <div class="text">
+    <h3>Create Images Using a Simple Prompt</h3>
+    <h1>Personalized <span class="highlight">Marketing</span></h1>
+    <h1>with AKOOL's AI Image Generator</h1>
+    <p>With our AI image generator, you can create custom marketing campaigns
+      for all your consumer demographics without breaking the bank.</p>
+    <p>Get started today to see how easy personalized advertisement creation can be.</p>
+  </div>
+</div>
+<div class="image_set" style="margin-top: 70px; text-align: left;">
+  <h1 style="color: #FFFFFF; font-size: 48px; font-weight: bold;">Embrace Variety</h1>
+  <h1 style="color: #FFFFFF; font-size: 48px; font-weight: bold;">with Generative AI</h1>
+  <div class="image-set_sub" style="margin-top: 30px;text-align: center;">
+
+    <img src="{{ url_for('static', filename='images/img_18.png') }}" alt="Image" style="width: 80%; height: auto;">
+
+  </div>
+</div>
+<div class="container">
+    <div class="case_studies" style="margin-top: 70px; text-align: center;  justify-content: space-between;">
+        <h1 style="color: white; font-size: 36px; font-weight: bold;">Case Studies</h1>
+
+
+        <div id="caseStudiesCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <!-- Slide 1 -->
+                <div class="carousel-item active">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card case-study-card">
+                                <img src="{{url_for('static', filename='images/img_24.png')}}" class="card-img-top" alt="Case Study 1">
+                                <div class="card-body">
+                                    <h5 class="case-title">AKOOL's Impact on Curious Refuge's Courses</h5>
+                                    <p class="case-subtitle">Face Swap</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card case-study-card">
+                                <img src="{{url_for('static', filename='images/case_8.png')}}" class="card-img-top" alt="Case Study 2">
+                                <div class="card-body">
+                                    <h5 class="case-title">Orange Won the Top Prize for Sport Campaign</h5>
+                                    <p class="case-subtitle">Face Swap</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card case-study-card">
+                                <img src="{{url_for('static', filename='images/img_18.png')}}" class="card-img-top" alt="Case Study 3">
+                                <div class="card-body">
+                                    <h5 class="case-title">Ruth's Chris Steak House Image Generator Tool</h5>
+                                    <p class="case-subtitle">Image Generator</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="carousel-item">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card case-study-card">
+                                <img src="{{url_for('static', filename='images/img_20.png')}}" class="card-img-top" alt="Case Study 4">
+                                <div class="card-body">
+                                    <h5 class="case-title">Another Case Study</h5>
+                                    <p class="case-subtitle">Face Swap</p> <!-- Align with previous slide categories -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card case-study-card">
+                                <img src="{{url_for('static', filename='images/case_8.png')}}" class="card-img-top" alt="Case Study 5">
+                                <div class="card-body">
+                                    <h5 class="case-title">Yet Another Case Study</h5>
+                                    <p class="case-subtitle">Face Swap</p> <!-- Keep consistent category -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card case-study-card">
+                                <img src="{{url_for('static', filename='images/img_22.png')}}" class="card-img-top" alt="Case Study 6">
+                                <div class="card-body">
+                                    <h5 class="case-title">Another Case Study</h5>
+                                    <p class="case-subtitle">Image Generator</p> <!-- Make sure category matches -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#caseStudiesCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#caseStudiesCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+</div>
+<div class="FAQ" >
+     <h1 class="faq-title" style="margin-top: 70px;">FAQ</h1>
+    <div class="accordion" id="faqAccordion">
+
+        <!-- FAQ Item 1 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    What makes AKOOL's text to image generator different from similar tools?
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    The company’s text-to-image platform is a top-notch AI image generation solution, allowing users to create their first AI image in minutes. It's also known for its user-friendly and intuitive interface tailored for non-specialists. AKOOL provides extensive customization capabilities and generates hyper-realistic AI videos that closely resemble real actors, all at an exceptionally affordable price. That's why AKOOL is the best text to image AI platform available today.
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Item 2 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    What type of image formats can I upload to AKOOL?
+                </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    You can upload PNG, JPG, and GIF formats to AKOOL’s platform.
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Item 3 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Are companies currently using the text to image generator to create actual marketing campaigns?
+                </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    Yes, several companies are utilizing the tool for creating digital marketing campaigns as it provides realistic images quickly and efficiently.
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Item 4 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFour">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    How does AKOOL make sure that each AI image is unique?
+                </button>
+            </h2>
+            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    AKOOL uses advanced AI algorithms that are designed to generate unique outputs every time, ensuring that no two images are the same.
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Item 5 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFive">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                    Do you have any tips for improving the quality and accuracy of photos produced by the AKOOL AI text to image generator?
+                </button>
+            </h2>
+            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    Yes, providing detailed and descriptive prompts when using the text to image generator ensures higher accuracy and better quality in the generated images.
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+</div>
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-logo">
+      <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo">
+    </div>
+    <div class="footer-links">
+      <div class="footer-column">
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="#">All Products</a></li>
+          <li><a href="#">Face Swap</a></li>
+          <li><a href="#">Realistic Avatar</a></li>
+          <li><a href="#">Streaming Avatar</a></li>
+          <li><a href="#">Video Translate</a></li>
+          <li><a href="#">Talking Photo</a></li>
+          <li><a href="#">Image Generator</a></li>
+          <li><a href="#">Background Change</a></li>
+          <li><a href="#">Video Campaign</a></li>
+          <li><a href="#">Jarvis Moderator</a></li>
+          <li><a href="#">AI Support Agent</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="#">Case Studies</a></li>
+          <li><a href="#">Use Cases</a></li>
+          <li><a href="#">Videos</a></li>
+          <li><a href="#">Creator Fund</a></li>
+          <li><a href="#">Webinar</a></li>
+          <li><a href="#">Guides</a></li>
+          <li><a href="#">Affiliate Program</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Research</a></li>
+          <li><a href="#">News</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <a href="mailto:info@akool.com">info@akool.com</a>
+      </div>
+    </div>
+    <div class="footer-social">
+      <h4>Join the Community</h4>
+      <ul>
+
+  <li><a href="https://www.youtube.com" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="YouTube" width="24px">
+  </a></li>
+
+
+  <li><a href="https://www.linkedin.com" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn" width="24px">
+  </a></li>
+
+  <li><a href="https://www.instagram.com" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" width="24px">
+  </a></li>
+</ul>
+
+
+    </div>
+  </div>
+</footer>
+
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
