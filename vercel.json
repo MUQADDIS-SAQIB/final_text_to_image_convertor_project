@@ -1,7 +1,16 @@
 {
-  "functions": {
-    "api/index.py": {
-      "runtime": "python3.9"
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/index.py",
+      "use": "@vercel/python"
     }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "api/index.py" }
+  ],
+  "env": {
+    "HUGGING_FACE_TOKEN": "@hugging_face_token"  // Reference token from Vercel dashboard
   }
 }
+
